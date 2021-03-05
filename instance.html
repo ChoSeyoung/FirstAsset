@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 개발버전, 도움되는 콘솔 경고를 포함. -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ foo }}</p>
+        <!-- obj.foo는 더이상 변하지 않습니다! -->
+        <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+    <script>
+        var obj = {
+                foo: 'bar'
+            }
+            //Object.freeze()를 사용하게 되면 readonly로 변합니다.
+        Object.freeze(obj);
+
+        new Vue({
+            el: '#app',
+            data: obj
+        })
+    </script>
+</body>
+
+</html>
