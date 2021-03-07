@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 개발버전, 도움되는 콘솔 경고를 포함. -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <!-- 기본 형태 -->
+    <span>메시지: {{ msg }}</span>
+    <br>
+    <span v-once>다시는 변경하지 않습니다: {{ msg }}</span>
+    <script>
+        var app = new Vue({
+            el: 'span',
+            data: {
+                msg: 'Hello Vue.js'
+            }
+        })
+    </script>
+
+    <p id="app-1">Using mustaches: {{ rawHtml }}</p>
+    <p id="app-2">Using v-html directive: <span v-html="rawHtml"></span></p>
+    <script>
+        new Vue({
+            el: '#app-1',
+            data: {
+                rawHtml: '<span style="color: red">This should be red</span>'
+            }
+        })
+        new Vue({
+            el: '#app-2',
+            data: {
+                rawHtml: '<span style="color: red">This should be red</span>'
+            }
+        })
+    </script>
+    <div id="app-3">
+        <input type="text" v-model="message">
+        <button v-bind:disabled="message.length < 1">button</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app-3',
+            data: {
+                message: ""
+            }
+        })
+    </script>
+</body>
+
+</html>
